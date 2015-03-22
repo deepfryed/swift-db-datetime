@@ -1,5 +1,10 @@
 #include "datetime.h"
+#include <time.h>
 #include <ctype.h>
+
+#define CONST_GET(scope, constant) rb_funcall(scope, rb_intern("const_get"), 1, rb_str_new2(constant))
+#define TO_S(v)                    rb_funcall(v, rb_intern("to_s"), 0)
+#define CSTRING(v)                 RSTRING_PTR(TO_S(v))
 
 extern VALUE dtformat;
 
